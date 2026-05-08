@@ -1,0 +1,135 @@
+/*This is my CSS page for styling on the HTML page*/
+
+/*This is my table styling for the board*/
+table, td {
+    background-color: grey;
+    border: 2px solid grey; /*This color here is what determines if the outline of each small table has thier outline. Use grey to get rid of it.*/
+    border-collapse: separate;
+    border-radius: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 35px;
+}
+
+/*This is for the individual squares within the match board*/
+.innerTD {
+    background-color: gold;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    border: 2px solid black;
+}
+
+/*Used this to make the squares closer together.*/
+.innerTable {
+    padding: 20px;
+}
+
+.outerTD {
+    background-color: grey;
+    border-color: grey;
+    padding: 0px;
+}
+
+/*This is the HTML background*/
+body {
+    background-color: black;
+}
+
+/*This is to make the input box for each square borderless and the same background color*/
+.inputText {
+    width: 25px;
+    height: 25px;
+    border: none;
+    background-color: gold;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+/*This is so the outline that appears when you click inside the box to enter a number goes away.*/
+textarea:focus, input:focus{
+    outline: none;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    margin-top: 50px;
+}
+
+h2 {
+    color: red;
+    text-align: center;
+    margin-top: 50px;
+}
+
+button {
+    background-color: red;
+    padding: 25px;
+}
+
+.buttonStyle {
+    background-color: red;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*All of this is for the loading screen.*/
+#loading-screen {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  background: black;
+  display: flex;
+  color: red;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
+
+#loading-screen.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#main-content {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  display: block;
+}
+
+#main-content.visible {
+  opacity: 1;
+}

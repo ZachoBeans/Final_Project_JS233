@@ -1,0 +1,24 @@
+{
+  "name": "final_project_js233",
+  "version": "1.0.0",
+  "description": "",
+  "main": "mainJSPage.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZachoBeans/Final_Project_JS233.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ZachoBeans/Final_Project_JS233/issues"
+  },
+  "homepage": "https://github.com/ZachoBeans/Final_Project_JS233#readme",
+  "devDependencies": {
+    "vite": "^8.0.11"
+  }
+}
