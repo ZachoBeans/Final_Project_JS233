@@ -19,6 +19,9 @@
   },
   "homepage": "https://github.com/ZachoBeans/Final_Project_JS233#readme",
   "devDependencies": {
-    "vite": "^8.0.11"
+    "vite": "^8.0.14"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.8"
   }
 }

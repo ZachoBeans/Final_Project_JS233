@@ -1,4 +1,14 @@
-// This is my JS file that I am going to refactor and make better for the final version for JS 233.
+
+
+export class ImageView {
+  constructor() {
+    // this. ? = document.getElementById(' ? ');
+  }
+}
+
+//Everything above is my new code
+
+//Everything below is my old code
 
 let buttons = document.querySelectorAll(".cellButton");
   
