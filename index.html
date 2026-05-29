@@ -13,35 +13,52 @@
 
 <body>
 
- <!--Changed the HTML from a table to divs so I could display the images from the API better and make it way easier to read-->
+    <!--Changed the HTML from a table to divs so I could display the images from the API better and make it way easier to read-->
 
-    <div class="tile-row">
-        <div id="0" name="tile" class="game-tile"></div>
-        <div id="1" name="tile" class="game-tile"></div>
-        <div id="2" name="tile" class="game-tile"></div>
-        <div id="3" name="tile" class="game-tile"></div>
-        <div id="4" name="tile" class="game-tile"></div>
+    <div class="game-outline">
+
+        <div class="game-mat" id="mat">
+
+            <div class="tile-row">
+                <div id="0" name="tile" class="game-tile"></div>
+                <div id="1" name="tile" class="game-tile"></div>
+                <div id="2" name="tile" class="game-tile"></div>
+                <div id="3" name="tile" class="game-tile"></div>
+                <div id="4" name="tile" class="game-tile"></div>
+            </div>
+
+            <!-- Row 2 of tiles -->
+            <div class="tile-row">
+                <div id="5" name="tile" class="game-tile"></div>
+                <div id="6" name="tile" class="game-tile"></div>
+                <div id="7" name="tile" class="game-tile"></div>
+                <div id="8" name="tile" class="game-tile"></div>
+                <div id="9" name="tile" class="game-tile"></div>
+            </div>
+
+            <!-- Row 3 of tiles -->
+            <div class="tile-row">
+                <div id="10" name="tile" class="game-tile"></div>
+                <div id="11" name="tile" class="game-tile"></div>
+                <div id="12" name="tile" class="game-tile"></div>
+                <div id="13" name="tile" class="game-tile"></div>
+                <div id="14" name="tile" class="game-tile"></div>
+            </div>
+
+            <!-- Row 4 of tiles -->
+            <div class="tile-row">
+                <div id="10" name="tile" class="game-tile"></div>
+                <div id="11" name="tile" class="game-tile"></div>
+                <div id="12" name="tile" class="game-tile"></div>
+                <div id="13" name="tile" class="game-tile"></div>
+                <div id="14" name="tile" class="game-tile"></div>
+            </div>
+
+        </div>
+
     </div>
 
-    <!-- Row 2 of tiles -->
-    <div class="tile-row">
-        <div id="5" name="tile" class="game-tile"></div>
-        <div id="6" name="tile" class="game-tile"></div>
-        <div id="7" name="tile" class="game-tile"></div>
-        <div id="8" name="tile" class="game-tile"></div>
-        <div id="9" name="tile" class="game-tile"></div>
-    </div>
-
-    <!-- Row 3 of tiles -->
-    <div class="tile-row">
-        <div id="10" name="tile" class="game-tile"></div>
-        <div id="11" name="tile" class="game-tile"></div>
-        <div id="12" name="tile" class="game-tile"></div>
-        <div id="13" name="tile" class="game-tile"></div>
-        <div id="14" name="tile" class="game-tile"></div>
-    </div>
-
-    <script src="view.js"></script>
+    <script type="module" src="js_files/controller.js"></script>
 
     <h2 id="win" style="display: none;">You won! Refresh the page to play again!</h2>
 
