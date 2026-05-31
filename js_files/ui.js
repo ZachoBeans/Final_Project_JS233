@@ -1,24 +1,38 @@
-//The UI for the game. Displays the Pokemon images under each tile
+//The UI for the game. Displays the Pokemon images under each tile. I call these methods in the controller
 
-import { fetchImage } from './fetchAPI.js';
+const IMAGE_PATH = "../images/pokeCard.png";
 
-async function loadPokemonImages() {
-    const pokemon = await fetchImage();
+export class UI {
+  constructor() {
+    this.tiles = Array.from(document.querySelectorAll(".game-tile"));
+  }
+  showPokemon(tile) {
+    tile.style.backgroundImage = "none";
+    tile.innerHTML = `<img src="${tile.dataset.image}" alt="${tile.dataset.name}">`;
+  }
 
-    if (!pokemon) {
-        console.log("No Pokémon images loaded.");
-        return;
+  hidePokemon(tile) {
+    tile.innerHTML = "";
+    tile.style.backgroundImage = `url(${IMAGE_PATH})`;
+  }
+
+  showWinMessage() {
+    document.getElementById("win").style.display = "block";
+  }
+
+  allBackOfTiles() {
+    for (let i = 0; i < this.tiles.length; i++) {
+      this.backOfTile(i);
     }
+  }
 
-    const tiles = document.querySelectorAll('.game-tile');
+  backOfTile(index) {
+    let tile = this.tiles[index];
+    tile.style.backgroundImage = `url(${IMAGE_PATH})`;
+  }
 
-    pokemon.forEach((poke, index) => {
-        tiles[index].innerHTML = `
-            <img src="${poke.image}" alt="${poke.name}">
-        `;
-    });
+  showFrontOfTile(index) {
+    let tile = this.tiles[index];
+    tile.style.backgroundImage = "none";
+  }
 }
-
-loadPokemonImages();
-
-

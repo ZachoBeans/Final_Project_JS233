@@ -1,75 +1,86 @@
 //The core game logic for the game. Handles the matching of the tiles
 
-import { fetchImage } from './fetchAPI.js';
+import { fetchImage } from "./fetchAPI.js";
+import { UI } from "./ui.js";
 
-let firstClick = null;
-let secondClick = null;
-let locked = false;
+export default class GameController {
+  constructor() {
+    this.ui = new UI();
 
-async function setupGame() {
+    this.ui.allBackOfTiles();
+    this.firstClick = null;
+    this.secondClick = null;
+    this.locked = false;
+
+    this.setupGame();
+  }
+
+  async setupGame() {
     const pokemon = await fetchImage();
 
     if (!pokemon) {
-        console.log("Could not load Pokémon.");
-        return;
+      console.log("Could not load Pokémon.");
+      return;
     }
 
-    const tiles = document.querySelectorAll(".game-tile");
-    const tileArray = Array.from(tiles);
+    const pairs = [...pokemon.slice(0, 10), ...pokemon.slice(0, 10)];
+    pairs.sort(() => Math.random() - 0.5);
 
-    tileArray.forEach((tile, index) => {
-        tile.dataset.name = pokemon[index].name;
-        tile.dataset.image = pokemon[index].image;
+    this.tiles = Array.from(document.querySelectorAll(".game-tile"));
 
-        tile.innerHTML = ""; // hide image at start
+    this.tiles.forEach((tile, index) => {
+      tile.dataset.name = pairs[index].name;
+      tile.dataset.image = pairs[index].image;
 
-        tile.addEventListener("click", () => {
-            showPokemon(tile, tileArray);
-        });
+      tile.innerHTML = "";
+
+      tile.addEventListener("click", () => {
+        this.showPokemon(tile);
+      });
     });
-}
+  }
 
-function showPokemon(tile, tileArray) {
-    if (locked) return;
+  showPokemon(tile) {
+    if (this.locked) return;
     if (tile.classList.contains("matched")) return;
-    if (tile === firstClick) return;
+    if (tile === this.firstClick) return;
 
-    tile.innerHTML = `
-        <img src="${tile.dataset.image}" alt="${tile.dataset.name}">
-    `;
+    this.ui.showPokemon(tile);
 
-    if (!firstClick) {
-        firstClick = tile;
-        return;
+    if (!this.firstClick) {
+      this.firstClick = tile;
+      return;
     }
 
-    secondClick = tile;
+    this.secondClick = tile;
 
-    if (firstClick.dataset.name === secondClick.dataset.name) {
-        firstClick.classList.add("matched");
-        secondClick.classList.add("matched");
+    if (this.firstClick.dataset.name === this.secondClick.dataset.name) {
+      this.firstClick.classList.add("matched");
+      this.secondClick.classList.add("matched");
 
-        firstClick = null;
-        secondClick = null;
+      this.firstClick = null;
+      this.secondClick = null;
 
-        const allMatched =
-            document.querySelectorAll(".game-tile.matched").length === tileArray.length;
+      const allMatched =
+        document.querySelectorAll(".game-tile.matched").length ===
+        this.tiles.length;
 
-        if (allMatched) {
-            document.getElementById("win").style.display = "block";
-        }
+      if (allMatched) {
+        this.ui.showWinMessage();
+      }
     } else {
-        locked = true;
+      this.locked = true;
 
-        setTimeout(() => {
-            firstClick.innerHTML = "";
-            secondClick.innerHTML = "";
+      setTimeout(() => {
+        this.ui.hidePokemon(this.firstClick);
+        this.ui.hidePokemon(this.secondClick);
 
-            firstClick = null;
-            secondClick = null;
-            locked = false;
-        }, 1000);
+        this.firstClick = null;
+        this.secondClick = null;
+        this.locked = false;
+      }, 1000);
     }
+  }
 }
 
-setupGame();
+new GameController();
