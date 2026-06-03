@@ -4,8 +4,10 @@
   "description": "",
   "main": "mainJSPage.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "vite"
+    "test": "vitest run",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
@@ -20,7 +22,9 @@
   },
   "homepage": "https://github.com/ZachoBeans/Final_Project_JS233#readme",
   "devDependencies": {
-    "vite": "^8.0.14"
+    "jsdom": "^29.1.1",
+    "vite": "^8.0.14",
+    "vitest": "^4.1.8"
   },
   "dependencies": {
     "bootstrap": "^5.3.8",
